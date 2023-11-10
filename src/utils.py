@@ -3,12 +3,13 @@ from pathlib import Path
 from decouple import config
 import pinecone
 from openai import OpenAI
+import json
 
 
 OPENAI_API_KEY = config('OPENAI_API_KEY')
 PINECONE_API_KEY = config('PINECONE_API_KEY')
 PINECONE_ENV = config('PINECONE_ENV')
-LIMIT = 3750
+LIMIT = float("inf")
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_ENV)
@@ -22,14 +23,13 @@ index.describe_index_stats()
 # query = 'Can you summarize the findings of MRNA-6231 in monkeys?'
 # query = "Was there flaking skin in the monkey study using MRNA-6231?";
 
-
-
 def get_embeddings(query, model = "text-embedding-ada-002"):
   
   embeddingResp = client.embeddings.create(
     input=[query],
     model=model
   )
+  
   embeddings = embeddingResp.data[0].embedding
   
   return embeddings
@@ -59,15 +59,20 @@ def get_prompt_message(query, contexts):
   else:
       prompt = prompt_start + "\n\n---\n\n".join(contexts) + prompt_end
   message = {"role": "system", "content": prompt}
+  print('{MESSAGE}', message)
   return message
 
+def get_no_rag_prompt_message(prompt):
+  seed = "Use scientific reasoning to answer the following question \n Question: " + prompt
+  message = {"role": "system", "content": seed}
+  return message
 
 def get_summary_resp(message, model = "gpt-4"):
   res = client.chat.completions.create(
       model=model,
       messages=[message],
       temperature=0,
-      max_tokens=200,
+      max_tokens=1024,
       top_p=1,
       frequency_penalty=0,
       presence_penalty=0,
@@ -75,3 +80,10 @@ def get_summary_resp(message, model = "gpt-4"):
   )
   
   return res
+
+def process_json(data):
+  parsed_data = {}
+  with open('data.json', 'r') as json_file:
+      parsed_data = json.load(json_file)
+      print(parsed_data)
+        
