@@ -24,8 +24,8 @@ def make_request(question_input: str, rag_on: bool = False):
     return response
 
 
-st.header("With Context 🤖")
-on = st.toggle('With Retrieval Augmented Generation(RAG)')
+st.header("CRO Document Store Search")
+on = st.toggle('With Context 🤖')
 
 st.markdown("""---""")
 
