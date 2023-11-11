@@ -67,7 +67,7 @@ with st.sidebar:
     # st.markdown("""---""")
     st.write("Ajay Bhargava")
     st.write("Audrey Acken")
-    st.write("Emma Chen")
+    # st.write("Emma Chen")
     st.write("Swarad Gat")
     st.write("Sugam Devare")
 
