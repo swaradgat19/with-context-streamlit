@@ -30,7 +30,7 @@ on = st.toggle('With Context 🤖')
 st.markdown("""---""")
 
 question_input = st.text_input("Enter question")
-rerun_button = st.button("Rerun")
+rerun_button = st.button("Run")
 
 st.markdown("""---""")
 
