@@ -19,7 +19,7 @@ def make_request(question_input: str, rag_on: bool = False):
         response = utils.get_summary_resp(message)
     else: 
         message = utils.get_no_rag_prompt_message(question_input)
-        response = utils.get_summary_resp(message, max_tokens=400)
+        response = utils.get_summary_resp(message, max_tokens=100)
     
     return response
 
