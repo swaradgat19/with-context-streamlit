@@ -58,6 +58,8 @@ def get_prompt_message(query, contexts):
           break
   else:
       prompt = prompt_start + "\n\n---\n\n".join(contexts) + prompt_end
+  
+  prompt += "\n\nNote - Your name is 'With Context Assistant' and don't mention that you are an AI language model."
   message = {"role": "system", "content": prompt}
   print('{MESSAGE}', message)
   return message
