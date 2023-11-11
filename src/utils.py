@@ -69,12 +69,12 @@ def get_no_rag_prompt_message(prompt):
   message = {"role": "system", "content": seed}
   return message
 
-def get_summary_resp(message, model = "gpt-4-1106-preview"):
+def get_summary_resp(message, model = "gpt-4-1106-preview", max_tokens=1024 ):
   res = client.chat.completions.create(
       model=model,
       messages=[message],
       temperature=0,
-      max_tokens=1024,
+      max_tokens=max_tokens,
       top_p=1,
       frequency_penalty=0,
       presence_penalty=0,
