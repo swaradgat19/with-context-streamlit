@@ -56,9 +56,18 @@ else:
 
 
 with st.sidebar:
-    st.title("Usage Stats:")
-    st.markdown("""---""")
-    st.write("Promt tokens used :", prompt_tokens)
-    st.write("Completion tokens used :", completion_tokes)
-    st.write("Total tokens used :", total_tokens_used)
-    st.write("Total cost of request: ${:.8f}".format(cost_of_response))
+    # st.title("Usage Stats:")
+    # st.markdown("""---""")
+    # st.write("Promt tokens used :", prompt_tokens)
+    # st.write("Completion tokens used :", completion_tokes)
+    # st.write("Total tokens used :", total_tokens_used)
+    # st.write("Total cost of request: ${:.8f}".format(cost_of_response))
+    
+    st.title("Team With Context")
+    # st.markdown("""---""")
+    st.write("Ajay Bhargava")
+    st.write("Audrey Acken")
+    st.write("Emma Chen")
+    st.write("Swarad Gat")
+    st.write("Sugam Devare")
+
