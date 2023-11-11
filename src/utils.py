@@ -67,7 +67,7 @@ def get_no_rag_prompt_message(prompt):
   message = {"role": "system", "content": seed}
   return message
 
-def get_summary_resp(message, model = "gpt-3.5-turbo-1106"):
+def get_summary_resp(message, model = "gpt-4-1106-preview"):
   res = client.chat.completions.create(
       model=model,
       messages=[message],
